@@ -3,7 +3,7 @@ from .matrix import Matrix
 from math import sin, cos
 
 class Transform:
-
+    # TODO: These probably should be static methods
     @classmethod
     def translate(cls, x, y, z):
         """translate is a transformation that moves a point.
