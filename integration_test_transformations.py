@@ -1,6 +1,6 @@
 from matrices.matrix import Matrix
 from matrices.transforms import Transform
-from canvas.canvas_new import Canvas
+from canvas.canvas import Canvas
 from tuples.point import Point
 from tuples.color import Color
 

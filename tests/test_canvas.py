@@ -2,7 +2,7 @@ from pytest import mark, raises, skip
 from pathlib import Path
 
 #from ..canvas.canvas import Canvas
-from ..canvas.canvas_new import Canvas
+from ..canvas.canvas import Canvas
 from ..tuples.color import Color
 
 def test_creating_a_canvas():
