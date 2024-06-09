@@ -1,12 +1,17 @@
 from pytest import mark, raises, skip
 from pathlib import Path
 
-from ..canvas.canvas import Canvas
+#from ..canvas.canvas import Canvas
+from ..canvas.canvas_new import Canvas
 from ..tuples.color import Color
 
 def test_creating_a_canvas():
-    c = Canvas(10, 20)
-    assert sum(sum(row) for row in c._img) == 0
+    c = Canvas(10, 20)    
+    total_color = sum((c.pixel_at(i, j) 
+                       for i in range(10) 
+                       for j in range(20)), Color(0, 0, 0))
+    assert total_color == Color(0, 0, 0)
+    
 
 def test_writing_pixels_to_canvas():
     c = Canvas(10, 20)
