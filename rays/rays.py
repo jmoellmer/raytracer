@@ -35,6 +35,18 @@ class Ray:
         return self.origin + self.direction * t
     
     def intersect(self, sphere):
+        """Computes the intersection of a ray with a sphere
+        
+        Parameters
+        ----------
+        sphere : Sphere
+            The sphere to intersect with the ray
+
+        Returns
+        -------
+        list : float
+            A list of distances from the origin to the intersection points
+        """
         sphere_to_ray = self.origin - sphere.center
         
         a = dot(self.direction, self.direction)
