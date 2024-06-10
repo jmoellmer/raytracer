@@ -16,7 +16,7 @@ class Sphere:
             The center point of the sphere
         """
         self._id = uuid.uuid4()
-        self.radius = 1.0
+        self.radius = radius
         self.center = center
 
     @property
