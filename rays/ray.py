@@ -1,5 +1,6 @@
 from tuples.point import Point
 from tuples.vector import Vector, dot
+from .intersection import Intersection
 
 from math import sqrt
 
@@ -49,9 +50,9 @@ class Ray:
         """
         sphere_to_ray = self.origin - sphere.center
         
-        a = dot(self.direction, self.direction)
-        b = 2 * dot(self.direction, sphere_to_ray)
-        c = dot(sphere_to_ray, sphere_to_ray) - 1
+        a = dot(self.direction, self.direction)     # D**2
+        b = 2 * dot(self.direction, sphere_to_ray)  # 2OD
+        c = dot(sphere_to_ray, sphere_to_ray) - 1   # O**2 - R**2
 
         discriminant = b**2 - 4 * a * c
 
@@ -61,4 +62,5 @@ class Ray:
         t1 = (-b - sqrt(discriminant)) / (2 * a)
         t2 = (-b + sqrt(discriminant)) / (2 * a)
     
-        return [t1, t2]
+        return [Intersection(t1, sphere), 
+                Intersection(t2, sphere)]
