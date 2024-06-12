@@ -1,10 +1,10 @@
 from pytest import mark, raises, skip
 from math import sqrt
 
-from ..tuples.tuple import Tuple
-from ..tuples.point import Point, is_point
-from ..tuples.vector import Vector, is_vector, magnitude, norm, dot, cross
-from ..tuples.color import Color
+from tuples.tuple import Tuple
+from tuples.point import Point, is_point
+from tuples.vector import Vector, is_vector, magnitude, norm, dot, cross
+from tuples.color import Color
 
 # Tuples
 

@@ -1,6 +1,6 @@
-from tuples.point import Point
-from tuples.vector import Vector, dot
-from .intersection import Intersection
+from tuples.vector import dot
+from rays.intersection import Intersection
+from shapes.sphere import Shape
 
 from math import sqrt
 
@@ -48,10 +48,11 @@ class Ray:
         list : float
             A list of distances from the origin to the intersection points
         """
-        sphere_to_ray = self.origin - sphere.center
+        transformed_ray = self.transform(sphere.transform.inverse())
+        sphere_to_ray = transformed_ray.origin - sphere.center
         
-        a = dot(self.direction, self.direction)     # D**2
-        b = 2 * dot(self.direction, sphere_to_ray)  # 2OD
+        a = dot(transformed_ray.direction, transformed_ray.direction)     # D**2
+        b = 2 * dot(transformed_ray.direction, sphere_to_ray)  # 2OD
         c = dot(sphere_to_ray, sphere_to_ray) - 1   # O**2 - R**2
 
         discriminant = b**2 - 4 * a * c
@@ -64,3 +65,18 @@ class Ray:
     
         return [Intersection(t1, sphere), 
                 Intersection(t2, sphere)]
+    
+    def transform(self, matrix):
+        """Transforms the ray by the given matrix
+        
+        Parameters
+        ----------
+        matrix : Matrix
+            The matrix to transform the ray by
+
+        Returns
+        -------
+        Ray
+            The transformed ray
+        """
+        return Ray(matrix * self.origin, matrix * self.direction)

@@ -1,8 +1,7 @@
+from shapes.shape import Shape
 from tuples.point import Point
 
-import uuid
-
-class Sphere:
+class Sphere(Shape):
     def __init__(self, radius, center):
         """A default sphere origin (center point) at the world origin (0, 0, 0).
         A default radius of 1.0, unit sphere.
@@ -15,21 +14,9 @@ class Sphere:
         center : Point
             The center point of the sphere
         """
-        self._id = uuid.uuid4()
+        super().__init__()
         self.radius = radius
         self.center = center
-
-    @property
-    def id(self):
-        """Unique id of a sphere. This is a caluclated property, 
-        giving read-only access to the id
-        
-        Returns
-        -------
-        uuid
-            The unique id of the sphere
-        """
-        return self._id
 
 class SphereFactory:
 
